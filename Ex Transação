@@ -1,0 +1,17 @@
+-- Inicia a transação
+START TRANSACTION;
+
+-- Variável para o CPF de origem
+SET @cpfOrigem = '100.106.904-26'; -- Substitua pelo CPF de origem
+
+-- Atualiza o saldo da conta de origem
+UPDATE registros.Pessoas SET saldo = saldo - 500 WHERE cpf = @cpfOrigem;
+
+-- Variável para o CPF de destino
+SET @cpfDestino = '100.125.747-15'; -- Substitua pelo CPF de destino
+
+-- Atualiza o saldo da conta de destino
+UPDATE registros.Pessoas SET saldo = saldo + 500 WHERE cpf = @cpfDestino;
+
+-- Commit da transação se as operações foram bem-sucedidas
+COMMIT;
